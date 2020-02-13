@@ -23,6 +23,7 @@ python compare.py fixtures/file_1 fixtures/file_2
 4. If the URL is invalid in file_1 or file_2, that line is skipped. The request error is stored in "errors.log" file with line number.
 5. If the response code is non-2xx, that line is skipped. The response error is stored in "errors.log" file with line number.
 6. If the response body is not JSON, that line is skipped. The parsing error is stored in "errors.log" file with line number.
+7. If a request takes more than 5 seconds to return, that line is skipped. The timeout error is stored in "errors.log" file with line number.
 
 ## Random Link Generation:
 

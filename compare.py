@@ -20,6 +20,7 @@ def compare(node1, node2):
      return node1 == node2
 
 def compare_links(file_1, file_2):
+    timeout_s = 5
     headers = { "User-Agent": "Python" }
     error_file = open('errors.log', 'w')
 
@@ -33,11 +34,11 @@ def compare_links(file_1, file_2):
                 continue
 
             req_1 = Request(url_1, headers = headers)
-            res_1 = urlopen(req_1)
+            res_1 = urlopen(req_1, timeout = timeout_s)
             json_1 = json.loads(res_1.read())
 
             req_2 = Request(url_2, headers = headers)
-            res_2 = urlopen(req_2)
+            res_2 = urlopen(req_2, timeout = timeout_s)
             json_2 = json.loads(res_2.read())
 
             if compare(json_1, json_2):
