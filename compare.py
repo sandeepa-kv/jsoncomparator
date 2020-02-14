@@ -72,6 +72,7 @@ def compare_links(file_1, file_2):
                 print ("%s not equals %s" % (url_1, url_2))
         except Exception as exc:
             error_file.write("Error in line %s: %s\n" % (line_no, exc))
+            line_no += 1
             continue
 
         line_no += 1
