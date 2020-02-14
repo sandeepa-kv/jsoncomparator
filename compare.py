@@ -17,7 +17,32 @@ def open_file(file_path):
     return file
 
 def compare(node1, node2):
-     return node1 == node2
+    # return node1 == node2 is deep search by default.
+    # Below shows code in case it was not.
+    if type(node1) != type(node2):
+        return False
+
+    # Lists
+    if type(node1) is list:
+        if len(node1) != len(node2):
+            return False
+        for index in range(len(node1)):
+            if (not compare(node1[index], node2[index])):
+                return False
+
+    # Dictionaries
+    elif type(node1) is dict:
+        if len(node1) != len(node2):
+            return False
+        for key in node1:
+            if (key not in node2) or (not compare(node1[key], node2[key])):
+                return False
+
+    # Everything else
+    else:
+        return str(node1) == str(node2)
+
+    return True
 
 def compare_links(file_1, file_2):
     timeout_s = 5
